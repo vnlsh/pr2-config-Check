@@ -18,5 +18,14 @@ class TestConfig(unittest.TestCase):
         good_data = {"host": "localhost", "port": 8080, "log_level": "INFO"}
         self.assertEqual(validate_config(good_data), [])
 
+    def test_port_range(self):
+        # Порт вне диапазона
+        bad_data = {"host": "localhost", "port": 70000, "log_level": "INFO"}
+        self.assertIn("диапазоне", str(validate_config(bad_data)))
+        
+        # Порт 0
+        zero_data = {"host": "localhost", "port": 0, "log_level": "INFO"}
+        self.assertIn("диапазоне", str(validate_config(zero_data)))
+
 if __name__ == '__main__':
     unittest.main()

@@ -31,6 +31,12 @@ def check_config(path: str) -> bool:
     print("Конфигурация прочитана")
     return True
 
+def report_all_errors(data):
+    errors = validate_config(data)
+    if not errors:
+        return "Ошибок нет"
+    return "\n".join(errors)
+    
 if __name__ == "__main__":
     path = sys.argv[1] if len(sys.argv) > 1 else "config.json"
     sys.exit(0 if check_config(path) else 1)

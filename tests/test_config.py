@@ -27,5 +27,12 @@ class TestConfig(unittest.TestCase):
         zero_data = {"host": "localhost", "port": 0, "log_level": "INFO"}
         self.assertIn("диапазоне", str(validate_config(zero_data)))
 
+    def test_report_all_errors(self):
+        from config_check import report_all_errors
+        data = {"host": "localhost"}  # Не хватает port и log_level
+        report = report_all_errors(data)
+        self.assertIn("port", report)
+        self.assertIn("log_level", report)
+
 if __name__ == '__main__':
     unittest.main()

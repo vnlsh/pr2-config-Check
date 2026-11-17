@@ -1,6 +1,8 @@
 import json
 import sys
 
+def validate_config(data):
+    return [] # Заглушка, которая не выполняет проверок
 def check_config(path: str) -> bool:
     try:
         with open(path, "r", encoding="utf-8") as f:

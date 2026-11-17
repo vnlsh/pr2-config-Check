@@ -1,7 +1,7 @@
 import json
 import sys
 
-REQUIRED_KEYS = ["host", "port", "log_level"]
+REQUIRED_KEYS = ["host", "port", "log_level", "timeout"]
 
 def validate_config(data):
     errors = []

@@ -1,8 +1,13 @@
 import json
 import sys
 
+REQUIRED_KEYS = ["host", "port", "log_level"]
+
 def validate_config(data):
-    return [] # Заглушка, которая не выполняет проверок
+    missing = [k for k in REQUIRED_KEYS if k not in data]
+    if missing:
+        return [f"Отсутствуют ключи: {missing}"]
+    return []
 def check_config(path: str) -> bool:
     try:
         with open(path, "r", encoding="utf-8") as f:

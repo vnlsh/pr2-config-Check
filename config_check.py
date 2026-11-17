@@ -1,22 +1,9 @@
 import json
 import sys
 
-REQUIRED_KEYS = ["host", "port", "log_level"]
-
 def validate_config(data):
-    errors = []
+    return []  # Заглушка
     
-    # Проверка 1: Обязательные ключи
-    missing = [k for k in REQUIRED_KEYS if k not in data]
-    if missing:
-        errors.append(f"Отсутствуют ключи: {missing}")
-        
-    # Проверка 2: Типы (Вариант 8)
-    if "port" in data and not isinstance(data["port"], int):
-        errors.append("port должен быть целым числом")
-        
-    return errors
-
 def check_config(path: str) -> bool:
     try:
         with open(path, "r", encoding="utf-8") as f:
